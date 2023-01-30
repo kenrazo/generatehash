@@ -20,7 +20,7 @@ namespace BackgroundWorker
             using var scope = _serviceScopeFactory.CreateScope();
             var rmqService = scope.ServiceProvider.GetRequiredService<IRabbitmqService>();
 
-            rmqService.ConsumeMessage();
+            await rmqService.ConsumeMessage();
 
             while (!stoppingToken.IsCancellationRequested)
             {
