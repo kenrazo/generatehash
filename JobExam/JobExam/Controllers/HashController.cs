@@ -32,7 +32,7 @@ namespace JobExam.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("/hashes")]
         public async Task<IActionResult> GetHashes()
         {
             return Ok(await _hashRepository.Get());
