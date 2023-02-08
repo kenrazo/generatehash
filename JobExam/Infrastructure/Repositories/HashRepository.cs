@@ -18,9 +18,15 @@ namespace Infrastructure.Repositories
 
         public async Task Add(Hash hash)
         {
-            await _db.Hash.AddAsync(hash);
-            await _db.SaveChangesAsync();
-            
+            var dbContextOptions = new DbContextOptionsBuilder<HashDbContext>()
+                .UseSqlServer("Server=localhost, 1433;Initial Catalog=hash;Persist Security Info=False;User ID=sa;Password=8Waystop;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;")
+                .Options;
+
+            using (var context = new HashDbContext(dbContextOptions))
+            {
+                await context.Hash.AddAsync(hash);
+                await context.SaveChangesAsync();
+            }        
         }
 
         public async Task<HashesDto> Get()

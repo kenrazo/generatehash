@@ -11,7 +11,8 @@ namespace Infrastructure
         public static IServiceCollection InjectDbContext(this IServiceCollection services)
         {
             return services.AddDbContext<HashDbContext>(options => options
-                .UseSqlServer("Server=localhost, 1433;Initial Catalog=hash;Persist Security Info=False;User ID=sa;Password=8Waystop;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;", b=> b.MigrationsAssembly("JobExam")));
+                .UseSqlServer("Server=localhost, 1433;Initial Catalog=hash;Persist Security Info=False;User ID=sa;Password=8Waystop;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;", b=> b.MigrationsAssembly("JobExam")),
+                ServiceLifetime.Transient);
         }
 
         public static IServiceCollection InjectRepository(this IServiceCollection services)
