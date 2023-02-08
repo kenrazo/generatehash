@@ -4,7 +4,7 @@
     {
         public class HashGroupByDayDto
         {
-            public DateTime Day { get; set; }
+            public DateTime Date { get; set; }
             public int Count { get; set; }
         }
     }

@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories
             var hashGroupByDate = await _db.Hash.GroupBy(h => h.Date.Date)
             .Select(g => new HashGroupByDayDto
             {
-                Day = g.Key,
+                Date = g.Key,
                 Count = g.Count()
             })
             .ToListAsync();
